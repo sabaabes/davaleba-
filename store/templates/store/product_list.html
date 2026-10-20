@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <title>პროდუქტების სია</title>
+</head>
+<body>
+    <h1>ჩვენი მაღაზიის პროდუქტები</h1>
+
+    <ul>
+        {% for product in products %}
+            <li>
+                <strong>{{ product.name }}</strong> — 
+                ფასი: {{ product.price }} ლარი 
+                {% if product.has_discount %}
+                    <span style="color: red;">(ფასდაკლებით)</span>
+                {% endif %}
+                | კატეგორია: {{ product.category.name }}
+            </li>
+        {% empty %}
+            <li>პროდუქტები ჯერ არ არის დამატებული.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
